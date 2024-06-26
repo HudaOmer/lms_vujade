@@ -14,9 +14,7 @@ This project is developed using Laravel
 # SetUp
 
 ## `Database` 
-
 make sure to create lms database using myphpadmin directly or in cmd
-
 ```go
 $ mysql -u root
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -36,14 +34,43 @@ $
 ```
 now if not, in `.env` Folder set `DB_CONNECTION=mysql` & `DB_DATABASE=lms`
 
+## `Migration`
+to create books table first make a new migration
+```go
+$ php artisan make:migration create_books_table
 
+   INFO  Migration [path\lms_vujade\database\migrations/2024_06_26_020143_create_books_table.php] created successfully.
+
+$
+```
+then use migrate command to run all tables (without ':status')
+```go
+$ php artisan migrate:status
+
+  Migration name .................................................................................................................... Batch / Status       
+  0001_01_01_000000_create_users_table ..................................................................................................... [1] Ran       
+  0001_01_01_000001_create_cache_table ..................................................................................................... [1] Ran       
+  0001_01_01_000002_create_jobs_table ...................................................................................................... [1] Ran       
+  2024_06_26_020143_create_books_table ..................................................................................................... Pending       
+
+$
+```
 
 # MVC Architecture check
 
+## `Model`
+Added Book Model Using the command:
+```go
+$ php artisan make:model Book
+
+   INFO  Model [path\lms_vujade\app\Models\Book.php] created successfully.
+
+
+$
+```
+
 ## `Controller`
-
 Added BookController Using the command:
-
 ```go
 $ php artisan make:controller BookController
 

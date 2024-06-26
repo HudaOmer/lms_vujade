@@ -6,6 +6,9 @@
         <div class="title m-b-md">
             index page
         </div>
+        @foreach($books as $book)
+        <ul>{{ $book->name }} - {{ $book->language }} - {{ $book->edition }} - {{ $book->author }} - {{ $book->shelf_number }} - {{ $book->category }}</ul>
+        @endforeach
     </div>
 </div>
 @endsection

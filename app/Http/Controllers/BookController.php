@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Book;
 
 class BookController extends Controller
 {
@@ -14,7 +15,11 @@ class BookController extends Controller
      *         present in the database
      */
     public function index() {
-        return view('books.index');
+
+        $books = Book::all();
+        return view('books.index', [
+            'books' => $books
+        ]);
     }
 
     /**
