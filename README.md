@@ -12,9 +12,11 @@ This project is developed using Laravel
 
 
 # SetUp
+
 ## `Database` 
 
 make sure to create lms database using myphpadmin directly or in cmd
+
 ```go
 $ mysql -u root
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -30,12 +32,23 @@ Query OK, 1 row affected (0.002 sec)
 
 MariaDB [(none)]> exit
 Bye
+$
 ```
 now if not, in `.env` Folder set `DB_CONNECTION=mysql` & `DB_DATABASE=lms`
 
 
+
+# MVC Architecture check
+
+## `Controller`
+
+Added BookController Using the command:
+
 ```go
+$ php artisan make:controller BookController
+
+   INFO  Controller [path\lms_vujade\app\Http\Controllers\BookController.php] created successfully.
 
 
-
+$
 ```
