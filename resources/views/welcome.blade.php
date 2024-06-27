@@ -6,6 +6,7 @@
         <div class="title m-b-md">
             Library Management System
         </div>
+        <p class="mssg">{{ session('mssg') }}</p>
     </div>
 </div>
 @endsection
