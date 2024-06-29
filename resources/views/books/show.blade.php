@@ -6,11 +6,13 @@
         <div class="title m-b-md">
             Show page {{ $book->name }}
         </div>
-        <form action="/books/{{ $book->id }}" method="POST">
+        <form action="{{ route('books.destroy', $book->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button>Remove This book</button>
         </form>
+        <br>
+        <a href="{{ route('books.index') }}" class="back"> <- back to all books</a>
     </div>
 </div>
 @endsection

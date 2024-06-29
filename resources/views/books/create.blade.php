@@ -7,7 +7,7 @@
             Create Page
         </div>
         <h2>Add a New Book to the shelf</h2>
-        <form action="/books" method="POST">
+        <form action="{{ route('books.store') }}" method="POST">
             @csrf
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" required><br><br>
@@ -72,6 +72,8 @@
             <input type="submit" value="Save Book">
         </form>
 
+        <br>
+        <a href="{{ route('books.index') }}" class="back"> <- back to all books</a>
         
     </div>
 </div>
