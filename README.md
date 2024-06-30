@@ -55,6 +55,20 @@ $ php artisan migrate:status
 
 $
 ```
+## `Seeders`
+Populate books table with data
+```go
+$ php artisan make:seeder BooksTableSeeder
+
+   INFO  Seeder [path\lms_vujade\database\seeders\BooksTableSeeder.php] created successfully.
+
+
+$ php artisan db:seed --class=BooksTableSeeder
+
+   INFO  Seeding database.
+
+
+```
 
 # MVC Architecture check
 
