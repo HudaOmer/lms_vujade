@@ -70,6 +70,27 @@ $ php artisan db:seed --class=BooksTableSeeder
 
 ```
 
+## `Auth`
+used ui package:
+```go
+$ composer require laravel/ui
+
+$ php artisan ui vue --auth
+
+  The [Controller.php] file already exists. Do you want to replace it? (yes/no) [yes]
+❯ 
+
+   INFO  Authentication scaffolding generated successfully.
+
+   INFO  Vue scaffolding installed successfully.
+
+   WARN  Please run [npm install && npm run dev] to compile your fresh scaffolding.
+
+
+$ npm install && npm run dev
+```
+
+
 # MVC Architecture check
 
 ## `Model`

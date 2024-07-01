@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
 <div class="flex-center position-ref full-height">
@@ -11,7 +11,7 @@
         <ul><a href="{{ route('books.show', $book->id) }}">{{ $book->name }}</a> - {{ $book->language }} - {{ $book->edition }} - {{ $book->author }} - {{ $book->shelf_number }} - {{ $book->category }}</ul>
         @endforeach
         <br>
-        <a href="{{ route('welcome') }}" class="back"> <- back to home</a>
+        <a href="{{ route('welcome') }}" class="back"> <- back to home     </a>
         <a href="{{ route('books.create') }}">Create a new book</a>
         
     </div>
