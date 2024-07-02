@@ -89,7 +89,7 @@ $ php artisan ui vue --auth
 
 $ npm install && npm run dev
 ```
-
+you can `build` to make a manifest file
 
 # MVC Architecture check
 
