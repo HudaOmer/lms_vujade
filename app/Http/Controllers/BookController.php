@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
@@ -16,10 +17,11 @@ class BookController extends Controller
      */
     public function index() {
 
-        $books = Book::all();
-        return view('books.index', [
-            'books' => $books
-        ]);
+        $books = Book::all(); // Retrieve all books
+        $user = auth()->user(); // Get the authenticated user (or null if not authenticated)
+        
+        return view('books.index', compact('books', 'user'));
+
     }
 
     /**
@@ -31,6 +33,7 @@ class BookController extends Controller
     public function show($id) {
 
         $book = Book::findOrFail($id);
+
         return view('books.show', [
             'book' => $book
         ]);
@@ -42,6 +45,7 @@ class BookController extends Controller
      *         and store into the database
      */
     public function create() {
+
         return view('books.create');
     }
 
@@ -82,7 +86,7 @@ class BookController extends Controller
         $book->save();
 
         // Redirect with a success message
-        return redirect('/')->with('mssg', 'Book added successfully.');
+        return Redirect::route('welcome')->with('mssg', 'Book added successfully.');
     }
     
     /**
@@ -100,6 +104,23 @@ class BookController extends Controller
         $book->delete();
 
         // Redirect to the list of books after successful deletion
-        return redirect('/books')->with('mssg', 'Book deleted successfully.');
+        return Redirect::route('books.index')->with('mssg', 'Book deleted successfully.');
+    }
+
+    /**
+     * Borrow the specified book from storage.
+     *
+     * @param int $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse  // Redirects to the list of books
+     */
+    public function borrow($id, Request $request)
+    {
+        // Logic to handle borrowing a book
+        $book = Book::findOrFail($id);
+        $user = auth()->user(); // Assuming user is authenticated
+        $user->books()->attach($book->id, ['reserve_date' => now()], $user->id);
+
+        return Redirect::route('books.index')->with('mssg', 'Book borrowed successfully.');
     }
 }

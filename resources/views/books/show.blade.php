@@ -10,8 +10,14 @@
             @csrf
             @method('DELETE')
             <button>Remove This book</button>
+        </form><br>
+        @auth
+        <form method="POST" action="{{ route('books.borrow', $book->id) }}">
+            @csrf
+            <button type="submit">Borrow Book</button>
         </form>
-        <br>
+        @endauth
+        <br><br>
         <a href="{{ route('books.index') }}" class="back"> <- back to all books</a>
     </div>
 </div>

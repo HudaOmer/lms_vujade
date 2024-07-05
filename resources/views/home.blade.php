@@ -17,6 +17,11 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <br><br>
+            <div class="alert alert-success" role="alert">
+                <a href="{{ route('books.index') }}">View avalible books</a>
+            </div>
+
         </div>
     </div>
 </div>
