@@ -12,7 +12,8 @@ class BookController extends Controller
 
     /**
      * index - an action that renders a view
-     * Return: view of index that shows all books
+     * 
+     * @return: view of index that shows all books
      *         present in the database
      */
     public function index() {
@@ -26,8 +27,9 @@ class BookController extends Controller
 
     /**
      * show - an action that renders a view
-     * @$id: variable taken fron the url '/books/{id}'
-     * Return: view of index that shows a specific book
+     * 
+     * @param $id: variable taken fron the url '/books/{id}'
+     * @return: view of index that shows a specific book
      *         present in the database
      */
     public function show($id) {
@@ -41,7 +43,8 @@ class BookController extends Controller
 
     /**
      * create - an action that renders a view
-     * Return: view of index that creates a book
+     * 
+     * @return: view of index that creates a book
      *         and store into the database
      */
     public function create() {
@@ -66,6 +69,7 @@ class BookController extends Controller
             'edition' => 'nullable|string',
             'category' => 'required|string',
             'shelf_number' => 'required|string',
+            'quantity' => 'required|int'
         ]);
 
         // Create a new Book instance
@@ -77,6 +81,7 @@ class BookController extends Controller
         $book->edition = $validatedData['edition'];
         $book->category = $validatedData['category'];
         $book->shelf_number = $validatedData['shelf_number'];
+        $book->quantity = $validatedData['quantity'];
 
         // Set timestamps
         $book->created_at = now();
@@ -86,7 +91,7 @@ class BookController extends Controller
         $book->save();
 
         // Redirect with a success message
-        return Redirect::route('welcome')->with('mssg', 'Book added successfully.');
+        return Redirect::route('welcome')->with('mssg', 'Book was added successfully.');
     }
     
     /**
@@ -107,20 +112,4 @@ class BookController extends Controller
         return Redirect::route('books.index')->with('mssg', 'Book deleted successfully.');
     }
 
-    /**
-     * Borrow the specified book from storage.
-     *
-     * @param int $id
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse  // Redirects to the list of books
-     */
-    public function borrow($id, Request $request)
-    {
-        // Logic to handle borrowing a book
-        $book = Book::findOrFail($id);
-        $user = auth()->user(); // Assuming user is authenticated
-        $user->books()->attach($book->id, ['reserve_date' => now()], $user->id);
-
-        return Redirect::route('books.index')->with('mssg', 'Book borrowed successfully.');
-    }
 }

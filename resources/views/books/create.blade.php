@@ -65,6 +65,11 @@
                 <option value="ARB-FIC-SUP-010">ARB-FIC-SUP-010</option>
             </select><br><br>
             
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" required>
+            </div>
+
             <!-- These fields are hidden and managed by the server -->
             <input type="hidden" id="created_at" name="created_at" value="<?php echo date('Y-m-d H:i:s'); ?>">
             <input type="hidden" id="updated_at" name="updated_at" value="<?php echo date('Y-m-d H:i:s'); ?>">

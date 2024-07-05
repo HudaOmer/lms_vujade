@@ -28,6 +28,7 @@ class BooksTableSeeder extends Seeder
                 'shelf_number' => 'ARB-FIC-SUP-005',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'quantity' => 3
             ],
             [
                 'name' => 'الجندي المجهول',
@@ -39,6 +40,7 @@ class BooksTableSeeder extends Seeder
                 'shelf_number' => 'ARB-FIC-HOR-006',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'quantity' => 2
             ],
             [
                 'name' => 'أولاد القمر',
@@ -50,6 +52,7 @@ class BooksTableSeeder extends Seeder
                 'shelf_number' => 'ARB-FIC-HOR-004',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'quantity' => 1
             ],
             [
                 'name' => 'لغز الكوخ المحترق',
@@ -61,6 +64,7 @@ class BooksTableSeeder extends Seeder
                 'shelf_number' => 'ARB-FIC-FAN-001',
                 'created_at' => '2024-06-27 18:07:05',
                 'updated_at' => '2024-06-27 18:07:05',
+                'quantity' => 5
             ],
         ];
 

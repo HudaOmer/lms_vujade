@@ -19,7 +19,7 @@
             </div>
             <br><br>
             <div class="alert alert-success" role="alert">
-                <a href="{{ route('books.index') }}">View avalible books</a>
+                <a href="{{ route('books.list') }}">View avalible books</a>
             </div>
 
         </div>

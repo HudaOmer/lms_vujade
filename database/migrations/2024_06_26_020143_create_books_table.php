@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('edition');
             $table->string('category');
             $table->string('shelf_number');
+            $table->integer('quantity')->default(0);
         });
     }
 
