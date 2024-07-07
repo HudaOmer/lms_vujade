@@ -77,13 +77,13 @@ class BorrowController extends Controller
         // Calculate borrow days
         $reserveDate = Carbon::parse($book->pivot->reserve_date);
         $returnDate = Carbon::parse($return_date);
-        $borrowDays = $returnDate->diffInDays($reserveDate);
+        $borrowDays = $reserveDate->diffInDays($returnDate);
 
         // Calculate exceeded days and fine amount if due date is passed
         $dueDate = Carbon::parse($book->pivot->due_date);
-        $exceededDays = $returnDate->greaterThan($dueDate) ? $returnDate->diffInDays($dueDate) : 0;
-        $cost = $borrowDays * 0.1;
-        $fineAmount = $exceededDays * 1;
+        $exceededDays = $returnDate->greaterThan($dueDate) ? $dueDate->diffInDays($returnDate) : 0;
+        $cost = floor($borrowDays) * 0.1;
+        $fineAmount = floor($exceededDays) * 1;
 
         // Save data to reports table
         Report::create([
@@ -92,7 +92,7 @@ class BorrowController extends Controller
             'reserve_date' => $book->pivot->reserve_date,
             'return_date' => $returnDate,
             'due_date' => $book->pivot->due_date,
-            'borrowDays' => $borrowDays,
+            'borrow_days' => $borrowDays,
             'exceeded_days' => $exceededDays,
             'cost' => $cost,
             'fine_amount' => $fineAmount,

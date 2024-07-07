@@ -29,6 +29,7 @@ Route::post('/logout', function () {
     return redirect('/home'); // Change the redirect path as needed
 })->name('logout');
 
+
 // Controllers For Borrow and return Processes
 $userpath = '/user';
 Route::middleware(['auth:sanctum'])->group(function () use ($userpath) {

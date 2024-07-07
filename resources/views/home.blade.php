@@ -19,7 +19,11 @@
             </div>
             <br><br>
             <div class="alert alert-success" role="alert">
-                <a href="{{ route('books.list') }}">View avalible books</a>
+                <a class="dropdown-item" href="{{ route('books.list') }}">View avalible books</a>
+                <br>
+                <a class="dropdown-item" href="{{ route('books.borrowed') }}">View currently borrowed books</a>
+                <br>
+                <a class="dropdown-item" href="{{ route('reports.index') }}">View reports</a>
             </div>
 
         </div>
