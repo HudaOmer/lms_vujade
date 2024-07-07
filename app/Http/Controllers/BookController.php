@@ -112,4 +112,62 @@ class BookController extends Controller
         return Redirect::route('books.index')->with('mssg', 'Book deleted successfully.');
     }
 
+     /**
+     * Display a form to edit the details of a specific book.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        // Find the book by its ID; throw 404 error if not found
+        $book = Book::findOrFail($id);
+
+        // Return the view for editing with the book data
+        return view('books.edit', compact('book'));
+    }
+
+    /**
+     * Update the details of a specific book.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $id)
+    {
+        // Find the book by its ID; throw 404 error if not found
+        $book = Book::findOrFail($id);
+        
+        // Validate the incoming request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'publisher' => 'required|string|max:255',
+            'language' => 'required|string|max:255',
+            'edition' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'shelf_number' => 'required|string|max:255',
+            'quantity' => 'required|integer',
+            // Add validation rules for other fields as needed
+        ]);
+
+        // Update the book model with the validated data
+        $book->name = $request->name;
+        $book->author = $request->author;
+        $book->publisher = $request->publisher;
+        $book->language = $request->language;
+        $book->edition = $request->edition;
+        $book->category = $request->category;
+        $book->shelf_number = $request->shelf_number;
+        $book->quantity = $request->quantity;
+        // Update other fields as needed
+        
+        // Save the updated book details to the database
+        $book->save();
+
+        // Redirect back to the book details page with a success message
+        return redirect()->route('books.show', ['id' => $book->id])->with('mssg', 'Book updated successfully.');
+    }
+
 }

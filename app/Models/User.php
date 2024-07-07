@@ -45,8 +45,19 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get the books associated with the user.
+     */
     public function books()
     {
         return $this->belongsToMany(Book::class);
+    }
+
+    /**
+     * Get the reports (transactions) associated with the user.
+     */
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
     }
 }

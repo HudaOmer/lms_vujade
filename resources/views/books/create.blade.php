@@ -74,6 +74,7 @@
             <input type="hidden" id="created_at" name="created_at" value="<?php echo date('Y-m-d H:i:s'); ?>">
             <input type="hidden" id="updated_at" name="updated_at" value="<?php echo date('Y-m-d H:i:s'); ?>">
             
+            <br>
             <input type="submit" value="Save Book">
         </form>
 

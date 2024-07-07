@@ -15,11 +15,15 @@
         <h5>Shelf number: {{ $book->shelf_number }}</h5>
         <h5>Category: {{ $book->category }}</h5>
         <br>
+        <p class="mssg">{{ session('mssg') }}</p>
+        <!-- Button to Edit Page -->
+        <a href="{{ route('books.edit', ['id' => $book->id]) }}" class="btn btn-primary">Edit Book</a>
+        <br><br>
         <form action="{{ route('books.destroy', $book->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button>Remove This book</button>
-        </form><br>
+        </form>
         <br><br>
         <a href="{{ route('books.index') }}" class="back"> <- back to all books</a>
     </div>
